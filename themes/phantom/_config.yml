@@ -1,0 +1,60 @@
+# Header
+menu:
+  Home: /
+  About: /about.html
+  Resume: https://drive.google.com/file/d/0B2cR2veLdnt3N2JWUWxPaWRld3c/view?usp=sharing
+  Archives: /archives
+  
+language: en
+
+# Logo Image Source
+logo_src: /images/guy.jpg
+
+# Theme Main Subtitle
+subtitle_main: <span class="bheading"> Welcome to my portfolio! <br> I am Prastut, a 20 year old designer. </span>
+
+# Theme Secondary subtitle
+susbtitle_secondary: I'm a Human Computer Interaction enthusiast currently majoring in computer science from Vellore Institute of Technology, India. <br> Through designing posters, websites, as well as animating short films, I feel design as a medium to tap into the inner psychology of people. <br> A big fan of Don Norman's work in cognitive science, I'm passionate about disruptive changes through the use of design and technology.
+
+# Footer About Section
+about_footer: Always up for discussing design and entrepreneurship. <br> I am reachable at kr.prastut@gmail.com.
+
+about: /about.html
+resume: https://drive.google.com/file/d/0B2cR2veLdnt3N2JWUWxPaWRld3c/view?usp=sharing
+speaking: /speaking.html
+cgraphics: /cgraphics.html
+
+
+
+# Default post title
+default_post_title: Untitled
+
+# Default post cover index page (Recommended)
+default_cover_index: "http://placehold.it/450x450"
+
+# Default post cover index page (Optional)
+default_cover_detail:
+
+# Show Dates for posts and pages
+show_dates:
+
+# Comments. Choose one by filling up the information
+comments:
+  # Disqus comments
+  disqus_shortname: prastutkumar
+  # Facebook comments
+  facebook:
+    appid:
+    comment_count: 5
+    comment_colorscheme: light
+
+# Google Analytics Tracking ID
+google_analytics: UA-82835468-1
+
+
+# Social Accounts
+github_url: https://github.com/prastut
+behance_url: https://www.behance.net/prastutkumar
+facebook_url: https://www.facebook.com/prastut.kumar
+linkedin_url: https://in.linkedin.com/in/prastut
+# rss_url: \#

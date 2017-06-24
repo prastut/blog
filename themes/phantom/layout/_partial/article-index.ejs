@@ -1,0 +1,11 @@
+<%
+    var cssClass = "style" + (index % 12 + 1);
+%>
+
+<article class="<%- cssClass %>">
+    <span class="image">
+        <img src="<%- item.cover_index || theme.default_cover_index %>" alt="" />
+    </span>
+    <a href="<%- config.root %><%- item.path %>">
+    </a>
+</article>

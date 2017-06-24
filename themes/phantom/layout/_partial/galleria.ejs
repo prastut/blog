@@ -1,0 +1,9 @@
+<% if (item.gallery){ %>
+	<div class="galleria">
+        <% item.gallery.forEach(function(photo){ %>
+            <img src="<%- photo %>" />
+        <% }); %>
+	</div>
+<% } %>
+
+

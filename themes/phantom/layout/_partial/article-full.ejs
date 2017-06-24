@@ -1,0 +1,76 @@
+<style>
+
+    #preview {
+        width: 400px;
+        height: 700px;
+    }
+    #wrap { width: 600px; height: 390px; padding: 0; overflow: hidden; }
+    #frame { width: 800px; height: 520px; border: 1px solid black; }
+    #frame {
+        -ms-zoom: 0.75;
+        -moz-transform: scale(0.75);
+        -moz-transform-origin: 0 0;
+        -o-transform: scale(0.75);
+        -o-transform-origin: 0 0;
+        -webkit-transform: scale(0.75);
+        -webkit-transform-origin: 0 0;
+    }
+
+</style>
+
+
+<% if(theme.show_dates) { %>
+    <h1 class="title"><%- item.title || theme.default_post_title || "Untitled" %></h1>
+    <div class="meta">
+        <%= item.date.format(config.date_format) %>
+    </div>
+<% } else { %>
+    <h1 style="margin: 0 !important;"><%- item.title || theme.default_post_title || "Untitled" %></h1>
+    <p style="padding-left:0.3%; margin: 0 !important;"><%- item.subtitle || theme.default_post_title || "Untitled" %></p>
+    <ul class="stats">
+        <% if(item.live_preview) { %>
+    		<li><a href="<%- item.live_preview %>" target="_blank" >Live Preview</a></li>  
+		<% } %>
+        <% if(item.code) { %>
+    		<li><a href="<%- item.code %>" target="_blank" >View code</a></li>
+		<% } %>
+        <% if(item.team) { %>
+    		<li>team size: <%- item.team || "1" %></li> 
+		<% } %>
+        <% if(item.project_duration) { %>
+            <li>project duration: <%- item.project_duration%></li> 
+        <% } %>         
+    		
+    </ul>   
+<% } %>
+
+<% if(item.cover_detail || theme.default_cover_detail) { %>
+    <span class="image main"><img src="<%- item.cover_detail || theme.default_cover_detail %>" alt="" /></span>
+<% } %>
+
+
+<!-- Gallery -->
+<% if (item.photos && item.photos.length){ %>
+    <%- partial('gallery') %>
+<% } %>
+
+<!-- Content -->
+<%- item.content %>
+
+<% if (item.googleslides){ %>
+    <%- partial('googleslides') %>
+<% } %>
+
+
+<!-- Galleria -->
+<%- partial('galleria') %>
+
+
+<!-- Tags -->
+<%- partial('article-tags') %>
+
+<!-- Comments -->
+<div>
+    <%- partial("_partial/comments.ejs") %>
+</div>
+
