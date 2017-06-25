@@ -11,7 +11,7 @@ language: en
 logo_src: /images/guy.jpg
 
 # Theme Main Subtitle
-subtitle_main: <span class="bheading"> Welcome to my portfolio! <br> I am Prastut, a 20 year old designer. </span>
+subtitle_main: <span class="bheading"> Welcome to my portfolio! <br>  I am Prastut, a 20 year old creative technologist. </span>
 
 # Theme Secondary subtitle
 susbtitle_secondary: I'm a Human Computer Interaction enthusiast currently majoring in computer science from Vellore Institute of Technology, India. <br> Through designing posters, websites, as well as animating short films, I feel design as a medium to tap into the inner psychology of people. <br> A big fan of Don Norman's work in cognitive science, I'm passionate about disruptive changes through the use of design and technology.
@@ -49,7 +49,7 @@ comments:
     comment_colorscheme: light
 
 # Google Analytics Tracking ID
-google_analytics: UA-82835468-1
+google_analytics: UA-82835468-2
 
 
 # Social Accounts
