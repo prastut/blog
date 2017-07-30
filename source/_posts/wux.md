@@ -16,7 +16,7 @@ live_preview: http://www.worldusabilitycongress.com/ux-world-championship/
 * This, in turn, will then be sent to the UX World Championship Jury.
 * The best 10 students will be invited to be part of the UX World Championship finals.
 
-I was one of the 10 students who got the opportunity to represent their own college at the finals, which were held in Graz, Austria!
+I was one of the 10 students who got the opportunity to represent their own college at the finals, which were held in Graz, Austria! This post documents the work that I did for the competition. [Read more about my travel experience on Medium.](https://medium.com/@kr.prastut/world-user-experience-championship-a-whirlwind-of-an-experience-9d2d2d3f32c1)
 
 ## Problem Statement
 
