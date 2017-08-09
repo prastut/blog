@@ -6,209 +6,206 @@
 
 (function($) {
 
-	skel.breakpoints({
-		xlarge:	'(max-width: 1680px)',
-		large:	'(max-width: 1280px)',
-		medium:	'(max-width: 980px)',
-		small:	'(max-width: 736px)',
-		xsmall:	'(max-width: 480px)'
-	});
+    skel.breakpoints({
+        xlarge: '(max-width: 1680px)',
+        large: '(max-width: 1280px)',
+        medium: '(max-width: 980px)',
+        small: '(max-width: 736px)',
+        xsmall: '(max-width: 480px)'
+    });
 
-	$(function() {
+    $(function() {
 
-		NProgress.start();
-		var	$window = $(window),
-			$body = $('body');
+        NProgress.start();
+        var $window = $(window),
+            $body = $('body');
 
-		// Disable animations/transitions until the page has loaded.
-			
-			if(window.location.pathname == '/')
-			{
-				console.log('Homepage');
-				$body.addClass('is-loading');
+        // Disable animations/transitions until the page has loaded.
 
-				$window.on('load', function() {
-					window.setTimeout(function() {
-						$body.removeClass('is-loading');
-						NProgress.done();
-					}, 100);
-				});
-	
-			}
-			else
-			{
-				$window.on('load', function() {
-					NProgress.done();
-				});			
-			}
-			
-		// Touch? Creates problem with Galleria
-			if (skel.vars.touch)
-				$body.addClass('is-touch');
+        if (window.location.pathname == '/') {
+            console.log('Homepage');
+            $body.addClass('is-loading');
 
-		// Forms.
-			var $form = $('form');
+            $window.on('load', function() {
+                window.setTimeout(function() {
+                    $body.removeClass('is-loading');
+                    NProgress.done();
+                }, 100);
+            });
 
-			// Auto-resizing textareas.
-				$form.find('textarea').each(function() {
+        } else {
+            $window.on('load', function() {
+                NProgress.done();
+            });
+        }
 
-					var $this = $(this),
-						$wrapper = $('<div class="textarea-wrapper"></div>'),
-						$submits = $this.find('input[type="submit"]');
+        // Touch? Creates problem with Galleria
+        if (skel.vars.touch)
+            $body.addClass('is-touch');
 
-					$this
-						.wrap($wrapper)
-						.attr('rows', 1)
-						.css('overflow', 'hidden')
-						.css('resize', 'none')
-						.on('keydown', function(event) {
+        // Forms.
+        var $form = $('form');
 
-							if (event.keyCode == 13
-							&&	event.ctrlKey) {
+        // Auto-resizing textareas.
+        $form.find('textarea').each(function() {
 
-								event.preventDefault();
-								event.stopPropagation();
+            var $this = $(this),
+                $wrapper = $('<div class="textarea-wrapper"></div>'),
+                $submits = $this.find('input[type="submit"]');
 
-								$(this).blur();
+            $this
+                .wrap($wrapper)
+                .attr('rows', 1)
+                .css('overflow', 'hidden')
+                .css('resize', 'none')
+                .on('keydown', function(event) {
 
-							}
+                    if (event.keyCode == 13 &&
+                        event.ctrlKey) {
 
-						})
-						.on('blur focus', function() {
-							$this.val($.trim($this.val()));
-						})
-						.on('input blur focus --init', function() {
+                        event.preventDefault();
+                        event.stopPropagation();
 
-							$wrapper
-								.css('height', $this.height());
+                        $(this).blur();
 
-							$this
-								.css('height', 'auto')
-								.css('height', $this.prop('scrollHeight') + 'px');
+                    }
 
-						})
-						.on('keyup', function(event) {
+                })
+                .on('blur focus', function() {
+                    $this.val($.trim($this.val()));
+                })
+                .on('input blur focus --init', function() {
 
-							if (event.keyCode == 9)
-								$this
-									.select();
+                    $wrapper
+                        .css('height', $this.height());
 
-						})
-						.triggerHandler('--init');
+                    $this
+                        .css('height', 'auto')
+                        .css('height', $this.prop('scrollHeight') + 'px');
 
-					// Fix.
-						if (skel.vars.browser == 'ie'
-						||	skel.vars.mobile)
-							$this
-								.css('max-height', '10em')
-								.css('overflow-y', 'auto');
+                })
+                .on('keyup', function(event) {
 
-				});
+                    if (event.keyCode == 9)
+                        $this
+                        .select();
 
-			// Fix: Placeholder polyfill.
-				$form.placeholder();
+                })
+                .triggerHandler('--init');
 
-		// Prioritize "important" elements on medium.
-			skel.on('+medium -medium', function() {
-				$.prioritize(
-					'.important\\28 medium\\29',
-					skel.breakpoint('medium').active
-				);
-			});
+            // Fix.
+            if (skel.vars.browser == 'ie' ||
+                skel.vars.mobile)
+                $this
+                .css('max-height', '10em')
+                .css('overflow-y', 'auto');
 
-		// Menu.
-			var $menu = $('#menu');
+        });
 
-			$menu.wrapInner('<div class="inner"></div>');
+        // Fix: Placeholder polyfill.
+        $form.placeholder();
 
-			$menu._locked = false;
+        // Prioritize "important" elements on medium.
+        skel.on('+medium -medium', function() {
+            $.prioritize(
+                '.important\\28 medium\\29',
+                skel.breakpoint('medium').active
+            );
+        });
 
-			$menu._lock = function() {
+        // Menu.
+        var $menu = $('#menu');
 
-				if ($menu._locked)
-					return false;
+        $menu.wrapInner('<div class="inner"></div>');
 
-				$menu._locked = true;
+        $menu._locked = false;
 
-				window.setTimeout(function() {
-					$menu._locked = false;
-				}, 350);
+        $menu._lock = function() {
 
-				return true;
+            if ($menu._locked)
+                return false;
 
-			};
+            $menu._locked = true;
 
-			$menu._show = function() {
+            window.setTimeout(function() {
+                $menu._locked = false;
+            }, 350);
 
-				if ($menu._lock())
-					$body.addClass('is-menu-visible');
+            return true;
 
-			};
+        };
 
-			$menu._hide = function() {
+        $menu._show = function() {
 
-				if ($menu._lock())
-					$body.removeClass('is-menu-visible');
+            if ($menu._lock())
+                $body.addClass('is-menu-visible');
 
-			};
+        };
 
-			$menu._toggle = function() {
+        $menu._hide = function() {
 
-				if ($menu._lock())
-					$body.toggleClass('is-menu-visible');
+            if ($menu._lock())
+                $body.removeClass('is-menu-visible');
 
-			};
+        };
 
-			$menu
-				.appendTo($body)
-				.on('click', function(event) {
-					event.stopPropagation();
-				})
-				.on('click', 'a', function(event) {
+        $menu._toggle = function() {
 
-					var href = $(this).attr('href');
+            if ($menu._lock())
+                $body.toggleClass('is-menu-visible');
 
-					event.preventDefault();
-					event.stopPropagation();
+        };
 
-					// Hide.
-						$menu._hide();
+        $menu
+            .appendTo($body)
+            .on('click', function(event) {
+                event.stopPropagation();
+            })
+            .on('click', 'a', function(event) {
 
-					// Redirect.
-						if (href == '#menu')
-							return;
+                var href = $(this).attr('href');
 
-						window.setTimeout(function() {
-							window.location.href = href;
-						}, 350);
+                event.preventDefault();
+                event.stopPropagation();
 
-				})
-				.append('<a class="close" href="#menu">Close</a>');
+                // Hide.
+                $menu._hide();
 
-			$body
-				.on('click', 'a[href="#menu"]', function(event) {
+                // Redirect.
+                if (href == '#menu')
+                    return;
 
-					event.stopPropagation();
-					event.preventDefault();
+                window.setTimeout(function() {
+                    window.location.href = href;
+                }, 350);
 
-					// Toggle.
-						$menu._toggle();
+            })
+            .append('<a class="close" href="#menu">Close</a>');
 
-				})
-				.on('click', function(event) {
+        $body
+            .on('click', 'a[href="#menu"]', function(event) {
 
-					// Hide.
-						$menu._hide();
+                event.stopPropagation();
+                event.preventDefault();
 
-				})
-				.on('keydown', function(event) {
+                // Toggle.
+                $menu._toggle();
 
-					// Hide on escape.
-						if (event.keyCode == 27)
-							$menu._hide();
+            })
+            .on('click', function(event) {
 
-				});
+                // Hide.
+                $menu._hide();
 
-	});
+            })
+            .on('keydown', function(event) {
+
+                // Hide on escape.
+                if (event.keyCode == 27)
+                    $menu._hide();
+
+            });
+
+    });
 
 })(jQuery);
