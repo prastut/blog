@@ -19,8 +19,7 @@ Social Media platforms have tackled this problem by establishing content recomme
 Bubble integrates social interactions with content consumption experience to provide you a single stream for all your news/debates/discussions alike. The proposed framework distilles large volumes of social media data about any given topic to mine crowd opinion and present it in a consumable format for the people.
 
 ## Primary Research
-We initially focused on a soft niche that the team personally cared about: sports. Looking from data perspective, we had monumental amount of data being produced during sport events on social networks in terms of discussions, analysis, banters etc. 
-We started with observing the global trends on how sports fans engage in a match-watching activity and analyzed their needs and the cause of their behaviour. The same is tabulated below.
+We initially focused on a soft niche that the team personally cared about: sports. Looking from data perspective, we had monumental amount of data being produced during sport events on social networks in terms of discussions, analysis, banters etc. We started with observing the global trends on how sports fans engage in a match-watching activity and analyzed their needs and the cause of their behaviour. The same is tabulated below.
 
 ![primresearch](/images/dataviz/primresearch.jpg)
 
@@ -40,7 +39,7 @@ We classified the users into 5 groups:
 * **Intermediate 2** : Actively seek intermediate sport info and share/seek opinions of other sport fans.
 * **Advanced** : Actively seek all the info and participate in deep opinionated sport discussions.
  
-Out of the above categories, we decided that we would not be able to help the Basic 1 category because they simple do not care about sports. Also we would not be able to help the Advanced category because they already know it all and will continue to do so even without any help.
+Out of the above categories, we decided that we would not be able to help the Basic 1 category because they simply do not care enough about sports. Also we would not be able to help the Advanced category because they already know it all and will continue to do so even without any help.
  
 So we decided that our target users would be the three categories of Basic 2, Intermediate 1, and Intermediate 2.
 
@@ -54,85 +53,66 @@ So we decided that our target users would be the three categories of Basic 2, In
 
 ## Framework
 
-We extract Social Media posts relevant to a topic using ‘Listeners’. A ‘Listener’ is a set of keywords corresponding to a topic,updated and maintained manually. 
+We extract Social Media posts relevant to a topic using ‘Listeners’. A ‘Listener’ is a set of keywords corresponding to a topic,updated and maintained manually. Each post is then processed using using our Sentiments Analysis engine which provides 2 things: **Sentiment value** and **Entities** mentioned in the post in realtime. 
 
 
 ![framework](/images/dataviz/framework.jpg)
 
-Each post is then processed using using our Sentiments Analysis engine which provides 2 things: **Sentiment value** and **Entities** mentioned in the post in realtime. 
-
-Using the processed data we compute an ‘Opinion Index’ which represents the overall crowd opinion towards the topic at that particular instant. Coupled with time, this index enables us to capture the evolution of crowd sentiments over time. Further, posts can be filtered based on the entities they have mentioned, which gives individual trends for each entity associated with the topic.
-
 Next, we propose a framework to represent this information in a consumable format for the people. 
 
-### Consumable Framework
+### Iteration 1
 
-‘Opinion Index’ consists of two values, Positive Sentiment Index and Negative Sentiment Index, along with a timestamp. We opted against computing a single index to preserve the polarity of the crowd opinion at any given instant. 
+#### Chart1: Line charts
 
-The horizontal axis represents time and the vertical axis represents magnitude of the ‘Opinion Index’. The Positive and Negative Opinion Index is represented by ‘Green’ and ‘Red’ lines respectively.
+Using the processed data we compute an ‘Opinion Index’ which represents the overall crowd opinion towards the topic at that particular instant. ‘Opinion Index’ consists of two values: positive & negative sentiment value along with a timestamp. We opted against computing a single index to preserve the polarity of the crowd opinion at any given instant. Line chart helps the user to get: 
+* Polarity of crowd opinion which is communicated by the relative position of Positive and Negative lines corresponding to any given point on the horizontal axis.
+* Evolution of crowd opinion over time which is communicated by the trends formed by the line charts over time.
 
-We intend to provide two bits of information through this visualisation:
-Polarity of crowd opinion which is communicated by the relative position of Positive and Negative lines corresponding to any given point on the horizontal axis
-Evolution of crowd opinion over time which is communicated by the trends formed by the line charts over time
-
-The horizontal axis represents time and the vertical axis represents magnitude of the ‘Opinion Index’. The Positive and Negative Opinion Index is represented by ‘Green’ and ‘Red’ lines respectively.
-
-We intend to provide two bits of information through this visualisation:
-Polarity of crowd opinion which is communicated by the relative position of Positive and Negative lines corresponding to any given point on the horizontal axis
-Evolution of crowd opinion over time which is communicated by the trends formed by the line charts over time
-
-(adding context)
-
-It was observed that people were unable to get the context of the crowd opinion while consuming the visualisation. To counter this, factual description of the events were added by replacing the horizontal axis with an events timeline.
+![framework](/images/dataviz/earlyviz.gif)
+<span class="image-caption"> Horizontal axis - Time, Vertical axis -  magnitude of the ‘Opinion Index’. First interactive Prototype.</span>
 
 
-> insert line chart along with events timeline screenshot
 
-The crowd opinion plotted over an events timeline gives a context for consuming crowd reactions. 
+#### Chart 2: Scatter Chart
 
-We then decided to project the continuous index values to an axis of discrete values represented by emoticons. Emoticons make the sentiment information represented by the line chart more comprehensible.
+Users want to see what others are talking about so we employed a scatter chart for the data we were processing. Each post is represented by a bubble. When you hover/click on the bubble the person's tweet comes up. 
 
-> insert line chart with emoticon axis and events timeline screenshot)
+![framework](/images/dataviz/scatterchart.png)
+<span class="image-caption"> Horizontal axis - Time, Vertical axis -  magnitude of the sentiment of the post.</span>
 
-A user can explore the events on the events timeline and get the crowd reactions using the line chart. Hovering over the line chart reveals emoticons and shows the polarity of the opinion as percentage split between positive and negative opinions. 
+#### Problems with iteration 1
+#### Problem 1: Too much information
+It was observed that people were unable to get the context of the crowd opinion while consuming the visualisation. Time in sports is more observed through events eg: we care little about when a goal was scored. To counter this, factual description of the events were added by adding another horizontal axis with an events timeline. (In the above gif, the events timeline is the circles that you see just below the x axis). The crowd opinion plotted over an events timeline gives a context for consuming crowd reactions. 
 
-(adding ‘Bubbles’)
+#### Problem 2: Using 2 charts was an overkill. 
+Already the visualisation was informationally loaded, having people to consume 2 charts was an overkill. We decided to merge both these charts together. 
 
-While Opinion Index provides information about how the crowd is reacting towards a topic on the whole, qualitative information such as observations and analysis are hidden in individual social media posts.
 
-To integrate this feature into the proposed framework, we built a layer of Bubble chart over line chart, keeping the axes constant. 
+### Iteration 2
+![framework](/images/dataviz/iter2.jpg)
 
-> Insert Clutter ScatterChart
 
-Each post is represented by a bubble. The vertical position of the bubble corresponds to the magnitude of sentiment the post carries, represented by emoticons. The horizontal position is simply the time at which it was posted. We classify bubbles as positive or negative using green or red colored outline respectively. The size of the bubble represents the popularity of the post.
 
-Bubble chart faced an overcrowding problem owing to the high volume of the data. To filter the data, instead of opting for a recommendation engine, we rather use an algorithm which predicts the popularity of the post in general. 
-
-> insert filtered bubble chart screenshot>
-
+### Iteration 3: Final Prototype
 <div class="video-container">
 	<iframe src="http://prastutkumar.design/idc-work-viz" frameborder="0" allowfullscreen></iframe>    
 </div>
+<span class="image-caption"> The finished viz framework. Try interacting with the above viz using zoom/pan! </span>
 
 ## Products
 
-The proposed framework provides information about the overall crowd reaction about a given topic. Using event timeline, a temporal aspect is added which aids the overall understanding by adding a chronological sense to the series of events. Popular posts about the topic are also integrated into the framework. 
+The proposed framework provides information about the overall crowd reaction about a given topic. Using event timeline, a temporal aspect is added which aids the overall understanding by adding a chronological sense to the series of events. Popular posts about the topic are also integrated into the framework. The visualization framework acts as a blackbox for future products. People can use this framework embedded inside consumer facing products as a participatory media platform for following an event or a news. 
 
-People can use this framework as a participatory media platform for following an event or a news. I executed both of these
+I led the execution of these 2 products for the team:
 
 ### Messenger Bot
 
-> Insert Bot Picture
 
 The bot is also [live](https://www.messenger.com/t/BubbbleBuzz). Have fun exploring!
 
 ### Integrating with existing video players
 ![clutter](/images/dataviz/videoviz.png)
 
-
-### Match Center
-
-> Insert wireframes for webtool
 
 ## Conclusion
 > Add what I learnt
