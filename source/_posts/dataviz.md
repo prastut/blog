@@ -111,7 +111,7 @@ I led the execution of these 2 products for the team:
 The bot is also [live](https://www.messenger.com/t/BubbbleBuzz). Have fun exploring!
 
 ### Integrating with existing video players
-![clutter](/images/dataviz/videoviz.png)
+![clutter](/images/dataviz/videoviz.jpg)
 
 
 ## Conclusion
