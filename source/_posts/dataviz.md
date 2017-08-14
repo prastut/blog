@@ -106,15 +106,15 @@ The proposed framework provides information about the overall crowd reaction abo
 I led the execution of these 2 products for the team:
 
 ### Messenger Bot
-
+![bot](/images/dataviz/botflow.jpg)
 
 The bot is also [live](https://www.messenger.com/t/BubbbleBuzz). Have fun exploring!
 
 ### Integrating with existing video players
-![clutter](/images/dataviz/videoviz.jpg)
+![video](/images/dataviz/videoviz.jpg)
 
 
 ## Conclusion
-> Add what I learnt
+I had an amazing time working under the Professor Venkatesh. I got to attend his insightful lectures & jury sessions giving a taste of how the Industrial Design Center functions at IITB. The best quality about his mentorship is that he gave me freedom to pick and choose the work I wanted to do and he was extremely patient with the results. 
 
-The process of visualization can help us see the world in a new way, revealing unexpected patterns and trends in the otherwise hidden information around us. At its best, data visualization is expert storytelling.
+In the end, my take backs from this entire experience was that the process of visualization can help us see the world in a new way, revealing unexpected patterns and trends in the otherwise hidden information around us. I am an avid reader and I realized that at its best, data visualization is expert storytelling.
