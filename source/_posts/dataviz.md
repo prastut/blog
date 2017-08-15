@@ -25,7 +25,7 @@ We initially focused on a soft niche that the team personally cared about: sport
 
 ## Understanding the User
  
-We conducted several contextual inquiries inside and outside the IIT Bombay campus to understand the user domain. It took us a week to create affinity maps and come up with insights about our user. We tried to analyse user needs, user behaviour, their response and affinity towards sport news and then categorised them into different user groups.
+We conducted several contextual inquiries inside and outside the IIT Bombay campus to understand the user domain. It took us a week to create affinity maps and come up with insights about our user. We tried to analyse user needs, their behaviour & their response and affinity towards sport news and then categorised them into different user groups.
 
 ![secresearch](/images/dataviz/secresearch.jpg)
 
@@ -64,7 +64,9 @@ Next, we propose a framework to represent this information in a consumable forma
 
 #### Chart1: Line charts
 
-Using the processed data we compute an ‘Opinion Index’ which represents the overall crowd opinion towards the topic at that particular instant. ‘Opinion Index’ consists of two values: positive & negative sentiment value along with a timestamp. We opted against computing a single index to preserve the polarity of the crowd opinion at any given instant. Line chart helps the user to get: 
+Using the processed data we compute an ‘Opinion Index’ which represents the overall crowd opinion towards the topic at that particular instant. ‘Opinion Index’ consists of two values: positive & negative sentiment value along with a timestamp. We opted against computing a single index to preserve the polarity of the crowd opinion at any given instant. To plot values for a particular listener, we have 2 lines: one for positive and one for negative sentiment where x value represents time and y value represents sentiment. 
+
+Line chart helps the user to get: 
 * Polarity of crowd opinion which is communicated by the relative position of Positive and Negative lines corresponding to any given point on the horizontal axis.
 * Evolution of crowd opinion over time which is communicated by the trends formed by the line charts over time.
 
@@ -75,7 +77,7 @@ Using the processed data we compute an ‘Opinion Index’ which represents the 
 
 #### Chart 2: Scatter Chart
 
-Users want to see what others are talking about so we employed a scatter chart for the data we were processing. Each post is represented by a bubble. When you hover/click on the bubble the person's tweet comes up. 
+Users want to see what others are talking about so we employed a scatter chart for the data we were processing. Each post is represented by a bubble. To plot values for a particular listener, x value represents time, y value represents the sentiment of the post & radius of the bubble represents how influential the user who posted the post is. When you hover/click on the bubble the person's tweet comes up.
 
 ![framework](/images/dataviz/scatterchart.png)
 <span class="image-caption"> Horizontal axis - Time, Vertical axis -  magnitude of the sentiment of the post.</span>
